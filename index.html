@@ -9,14 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  @font-face{
-    font-family:'ALT Riviera';
-    src:url('ALTRivieraVF.ttf') format('truetype-variations');
-    font-weight:200 800; font-style:normal; font-display:swap;
-  }
+  @font-face{font-family:'ALT Riviera';src:url('ALTRivieraVF.ttf') format('truetype-variations');font-weight:200 800;font-style:normal;font-display:swap}
   :root{
-    --purple:#6828FF;
-    --a08:#6828FF14; --a10:#6828FF1A; --a16:#6828FF29;
+    --purple:#6828FF; --a10:#6828FF1A;
     --ground:#F0F1F2; --card:#FFFFFF; --border:#E5E7EB; --hairline:#F3F4F6;
     --ink:#1C222F; --sub:#4F5460; --tertiary:#91939A;
     --sans:'ALT Riviera',system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
@@ -24,198 +19,213 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0}
-  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;
-    -webkit-font-smoothing:antialiased;line-height:1.5}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.5}
   .wrap{max-width:1160px;margin:0 auto;padding:56px 28px 80px}
-
-  .eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--tertiary)}
+  .eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tertiary)}
   h1{font-weight:400;font-size:34px;letter-spacing:-.01em;margin:10px 0 0;line-height:1.12}
   .lede{font-weight:300;color:var(--sub);font-size:16px;max-width:70ch;margin:14px 0 0}
 
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
-  .cell{background:var(--card);border:1px solid var(--border);padding:22px 22px 20px;
-    display:flex;flex-direction:column}
-  .chd{display:flex;align-items:flex-start;gap:16px}
-  canvas.mark{flex:0 0 auto;background:transparent}
-  .meta{min-width:0}
-  .cat{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--tertiary)}
+  .cell{background:var(--card);border:1px solid var(--border);padding:22px 22px 8px;display:flex;flex-direction:column}
+  .cat{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tertiary)}
   .desc{color:var(--sub);font-weight:300;font-size:14px;margin-top:5px}
 
-  .names{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--hairline);
-    display:flex;flex-direction:column;gap:13px}
-  .name{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;align-items:baseline}
-  .nm{font-weight:400;font-size:22px;letter-spacing:-.01em;color:var(--ink)}
-  .why{grid-column:2;font-weight:300;font-size:13px;color:var(--sub)}
-  .tag{font-family:var(--mono);font-weight:500;font-size:9.5px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--purple);background:var(--a10);
-    padding:3px 7px;align-self:center;justify-self:start}
+  .names{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column}
+  .name{display:flex;gap:15px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--hairline)}
+  .name:first-child{border-top:0}
+  canvas.nmark{flex:0 0 auto;width:56px;height:56px;image-rendering:pixelated;margin-top:2px}
+  .ntext{min-width:0}
+  .hd{display:flex;align-items:center;gap:9px}
+  .nm{font-weight:400;font-size:21px;letter-spacing:-.01em;color:var(--ink);line-height:1}
   .name.lead .nm{color:var(--purple)}
+  .tag{font-family:var(--mono);font-weight:500;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);background:var(--a10);padding:3px 7px}
+  .why{font-weight:300;font-size:13px;color:var(--sub);margin-top:5px}
 
-  .foot{margin-top:30px;padding-top:20px;border-top:1px solid var(--border);
-    font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.04em;
-    text-transform:uppercase;color:var(--tertiary);line-height:1.9}
+  .foot{margin-top:30px;padding-top:20px;border-top:1px solid var(--border);font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--tertiary);line-height:1.9}
   .foot b{color:var(--sub);font-weight:500}
-
   @media (max-width:760px){.grid{grid-template-columns:1fr}.wrap{padding:40px 20px 64px}}
-  @media (prefers-reduced-motion:reduce){canvas.mark{opacity:1}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="eyebrow">Product lineup</div>
   <h1>Four products, one system</h1>
-  <p class="lede">Torq is settled. The other three each get three names — same rules as Torq: one or two syllables, right at first read in Turkish and English, name the mechanism and not the industry. The <b style="font-weight:400">-q</b> spelling stays on Torq alone, so the set reads as designed, not as one gimmick repeated.</p>
+  <p class="lede">Torq is settled — its mark stays as built. The other three each get three names, each with its own mark. Same rules as Torq: one or two syllables, right at first read in Turkish and English, name the mechanism and not the industry. The <b style="font-weight:400">-q</b> spelling stays on Torq alone.</p>
 
   <div class="grid">
 
-    <!-- FACTORY -->
     <article class="cell">
-      <div class="chd">
-        <canvas class="mark" data-mark="torq"></canvas>
-        <div class="meta">
-          <div class="cat">Factory</div>
-          <div class="desc">Torque — the production mechanism. The anchor the whole set rhymes against.</div>
-        </div>
-      </div>
+      <div class="cat">Factory</div>
+      <div class="desc">Torque — the production mechanism. The anchor the whole set rhymes against.</div>
       <ul class="names">
         <li class="name lead">
-          <span class="nm">Torq</span><span class="tag">Settled</span>
-          <span class="why">Kept as is. One syllable, names the mechanism, sets the -q the family borrows from.</span>
+          <canvas class="nmark" data-mark="torq"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Torq</span><span class="tag">Settled</span></div>
+          <div class="why">Kept as built — original mark, one syllable, sets the -q the family borrows from.</div></div>
         </li>
       </ul>
     </article>
 
-    <!-- RETAIL -->
     <article class="cell">
-      <div class="chd">
-        <canvas class="mark" data-mark="retail"></canvas>
-        <div class="meta">
-          <div class="cat">Retail</div>
-          <div class="desc">Stock, replenishment, shelf availability.</div>
-        </div>
-      </div>
+      <div class="cat">Retail</div>
+      <div class="desc">Stock, replenishment, shelf availability.</div>
       <ul class="names">
         <li class="name lead">
-          <span class="nm">Onhand</span><span class="tag">Lead</span>
-          <span class="why">The number every retailer argues about — names the metric the buyer already owns.</span>
+          <canvas class="nmark" data-mark="onhand"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Onhand</span><span class="tag">Lead</span></div>
+          <div class="why">The number every retailer argues about — names the metric the buyer already owns.</div></div>
         </li>
         <li class="name">
-          <span class="nm">Restock</span>
-          <span class="why">The replenishment action itself. Reads instantly in both languages.</span>
+          <canvas class="nmark" data-mark="restock"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Restock</span></div>
+          <div class="why">The replenishment action itself. Reads instantly in both languages.</div></div>
         </li>
         <li class="name">
-          <span class="nm">Shelf</span>
-          <span class="why">Where availability lives. One syllable, zero explanation in any market.</span>
+          <canvas class="nmark" data-mark="shelf"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Shelf</span></div>
+          <div class="why">Where availability lives. One syllable, zero explanation in any market.</div></div>
         </li>
       </ul>
     </article>
 
-    <!-- VOICE -->
     <article class="cell">
-      <div class="chd">
-        <canvas class="mark" data-mark="voice"></canvas>
-        <div class="meta">
-          <div class="cat">Voice</div>
-          <div class="desc">The AI voice layer — the product name that replaces Oktopus.</div>
-        </div>
-      </div>
+      <div class="cat">Voice</div>
+      <div class="desc">The AI voice layer — the product name that replaces Oktopus.</div>
       <ul class="names">
         <li class="name lead">
-          <span class="nm">Sonar</span><span class="tag">Lead</span>
-          <span class="why">Listen before speaking. Serious, anti-mascot, and you already own “Sonar Intake.”</span>
+          <canvas class="nmark" data-mark="sonar"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Sonar</span><span class="tag">Lead</span></div>
+          <div class="why">Listen before speaking. Serious, anti-mascot, and you already own “Sonar Intake.”</div></div>
         </li>
         <li class="name">
-          <span class="nm">Vox</span>
-          <span class="why">Voice, Latin root. One syllable, adult, reads correctly everywhere.</span>
+          <canvas class="nmark" data-mark="vox"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Vox</span></div>
+          <div class="why">Voice, Latin root. One syllable, adult, reads correctly everywhere.</div></div>
         </li>
         <li class="name">
-          <span class="nm">Relay</span>
-          <span class="why">The assistant that carries the conversation, person to person.</span>
+          <canvas class="nmark" data-mark="relay"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Relay</span></div>
+          <div class="why">The assistant that carries the conversation, person to person.</div></div>
         </li>
       </ul>
     </article>
 
-    <!-- COLLECTIONS -->
     <article class="cell">
-      <div class="chd">
-        <canvas class="mark" data-mark="collect"></canvas>
-        <div class="meta">
-          <div class="cat">Collections</div>
-          <div class="desc">Debt collection voice AI.</div>
-        </div>
-      </div>
+      <div class="cat">Collections</div>
+      <div class="desc">Debt collection voice AI.</div>
       <ul class="names">
         <li class="name lead">
-          <span class="nm">Solvo</span><span class="tag">Lead</span>
-          <span class="why">Latin “to loosen, to pay off.” Financial without pressure, ownable outright.</span>
+          <canvas class="nmark" data-mark="solvo"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Solvo</span><span class="tag">Lead</span></div>
+          <div class="why">Latin “to loosen, to pay off.” Financial without pressure, ownable outright.</div></div>
         </li>
         <li class="name">
-          <span class="nm">Settle</span>
-          <span class="why">What both sides want. Frames agreement, not chasing — the posture regulators like.</span>
+          <canvas class="nmark" data-mark="settle"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Settle</span></div>
+          <div class="why">What both sides want. Frames agreement, not chasing — the posture regulators like.</div></div>
         </li>
         <li class="name">
-          <span class="nm">Clear</span>
-          <span class="why">Clear the balance. One syllable, understood in zero seconds.</span>
+          <canvas class="nmark" data-mark="clear"></canvas>
+          <div class="ntext"><div class="hd"><span class="nm">Clear</span></div>
+          <div class="why">Clear the balance. One syllable, understood in zero seconds.</div></div>
         </li>
       </ul>
     </article>
 
   </div>
 
-  <div class="foot">
-    The <b>-q</b> stays on Torq alone &middot; leads read as a set → <b>Torq · Onhand · Sonar · Solvo</b>
-  </div>
+  <div class="foot">The <b>-q</b> stays on Torq alone &middot; leads read as a set → <b>Torq · Onhand · Sonar · Solvo</b></div>
 </div>
 
 <script>
 (function(){
-  var g=20, cell=4, DISP=68;
-  var P='#6828FF', D='rgba(104,40,255,.32)';
+  var g=20, cell=2, DISP=40;
+  var B='#3d1785', M='#6828ff', L='#9a6bff';
   function make(canvas, fn){
-    canvas.width=g*cell; canvas.height=g*cell;
-    canvas.style.width=DISP+'px'; canvas.style.height=DISP+'px'; canvas.style.imageRendering='pixelated';
+    canvas.width=g*cell; canvas.height=g*cell; canvas.style.imageRendering='pixelated';
     var ctx=canvas.getContext('2d');
     var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
     function px(x,y,c){ x=Math.round(x); y=Math.round(y); if(x<0||y<0||x>=g||y>=g)return; ctx.fillStyle=c; ctx.fillRect(x*cell,y*cell,cell,cell); }
+    function pxx(px_,x,y,c){}
     function frame(ts){ ctx.clearRect(0,0,g*cell,g*cell); fn(px, reduce?1.2:ts/1000); if(!reduce) requestAnimationFrame(frame); }
     requestAnimationFrame(frame);
   }
+  function line(px,x0,x1,y,c){for(var x=x0;x<=x1;x++)px(x,y,c);}
+  function box(px,x,y,w,h,c){for(var j=0;j<h;j++)for(var i=0;i<w;i++)px(x+i,y+j,c);}
+
+  // ---- Torq: exact original gear + rotating torque shimmer ----
+  var TG=["00000000000000000000","00000000010000000000","00000000010000000000","00001000033000010000","00012033333311021000","00000333000021100000","00003330000002110000","00003300000000210000","00003000111100010000","00033000122100021000","01133000122100021110","00003000111100010000","00001200000000210000","00001120000002110000","00000112000021100000","00012011122111021000","00001000011000010000","00000000001000000000","00000000001000000000","00000000000000000000"];
+  var TCELLS=[]; TG.forEach(function(row,y){for(var x=0;x<20;x++){if(row.charAt(x)!=='0')TCELLS.push([x,y]);}});
+  function torq(px,t){
+    var cx=9.5,cy=9.5,sweep=t*0.8;
+    TCELLS.forEach(function(p){
+      var x=p[0],y=p[1],dx=x-cx,dy=y-cy,dist=Math.sqrt(dx*dx+dy*dy),col;
+      if(dist<2.7){ col = dist<1.3 ? L : B; }
+      else{ var d=Math.cos(Math.atan2(dy,dx)-sweep); col = d>0.35?L:(d<-0.35?B:M); }
+      px(x,y,col);
+    });
+  }
+
   var marks={
-    torq:function(px,t){
-      var cx=9.5,cy=9.5,R=7;
-      for(var a=0;a<20;a++){var an=a/20*6.2832;px(cx+Math.cos(an)*R,cy+Math.sin(an)*R,D);}
-      for(var k=0;k<5;k++){var an=t*1.7+k*0.24;px(cx+Math.cos(an)*R,cy+Math.sin(an)*R,P);}
-      for(var y=8;y<=11;y++)for(var x=8;x<=11;x++)px(x,y,P);
+    torq:torq,
+
+    onhand:function(px,t){                     // top case lifts off the pallet and settles
+      line(px,2,17,18,B); line(px,2,17,17,B); px(3,19,B);px(9,19,B);px(16,19,B);
+      box(px,3,13,4,3,M); box(px,8,13,4,3,M); box(px,13,13,4,3,M);
+      box(px,5,9,4,3,M); box(px,11,9,4,3,M);
+      var lift=Math.round(3*(0.5+0.5*Math.sin(t*1.5)));
+      box(px,8,5-lift,4,3,L);
     },
-    retail:function(px,t){
-      [4,10,16].forEach(function(sy){for(var x=3;x<=16;x++)px(x,sy,D);});
-      [4,7,13].forEach(function(sx){px(sx,3,D);px(sx,2,D);});
-      [5,9,12,15].forEach(function(sx){px(sx,15,D);});
-      var n=6, ph=Math.floor(t*2.4)%(2*n);
-      for(var i=0;i<n;i++){ var sx=4+i*2; var on = ph<n ? i<ph : i>=(ph-n);
-        if(on){px(sx,9,P);px(sx+1,9,P);px(sx,8,P);px(sx+1,8,P);} }
+    restock:function(px,t){                    // shelf refills slot by slot, feed arrow above
+      line(px,2,17,16,B); line(px,2,17,15,B);
+      var n=5, ph=Math.floor(t*2.2)%(n+2);
+      for(var i=0;i<n;i++){ if(i<ph) box(px,3+i*3,11,3,4, i===ph-1?L:M); }
+      box(px,9,3,2,5,M); px(8,7,M);px(11,7,M); px(7,6,M);px(12,6,M);
     },
-    voice:function(px,t){
-      for(var y=3;y<=15;y++){px(2,y,D);px(17,y,D);}
-      for(var x=2;x<=17;x++){px(x,3,D);px(x,15,D);}
-      px(6,16,D);px(7,17,D);
-      [5,8,11,14].forEach(function(bx,i){
-        var h=2+Math.round(3.4*(0.5+0.5*Math.sin(t*4+i*1.1)));
-        var top=9-Math.floor(h/2);
-        for(var k=0;k<h;k++){px(bx,top+k,P);px(bx+1,top+k,P);}
+    shelf:function(px,t){                       // three shelves, one slot blinks empty→filled
+      var rows=[5,11,17];
+      rows.forEach(function(sy,ri){ line(px,2,17,sy,B);
+        for(var x=3;x<=15;x+=4){ if(ri===1 && x===7 && (Math.floor(t*1.6)%2)===0) continue;
+          box(px,x,sy-3,3,3, (ri===1&&x===7)?L:M); } });
+    },
+    sonar:function(px,t){                        // rings leave the core and fade
+      var cx=9.5,cy=9.5; box(px,8,8,4,4,L);
+      for(var r=0;r<3;r++){ var rad=((t*2.2 + r*2.6)%7.8)+2.4; if(rad>8.6) continue;
+        var col = rad>6.4?B:M;
+        for(var a=0;a<64;a++){var an=a/64*6.2832; px(cx+Math.cos(an)*rad, cy+Math.sin(an)*rad, col);} }
+    },
+    vox:function(px,t){                          // equalizer, full height
+      [3,7,11,15].forEach(function(bx,i){
+        var h=4+Math.round(9*(0.5+0.5*Math.sin(t*4+i*1.15)));
+        for(var k=0;k<h;k++){ box(px,bx,17-k,3,1, k===h-1?L:M); }
       });
     },
-    collect:function(px,t){
-      for(var x=3;x<=16;x++)px(x,16,D);
-      px(6,2,D);px(7,2,D);px(12,2,D);px(13,2,D);
+    relay:function(px,t){                         // packet carried between two nodes
+      box(px,2,7,5,5,M); box(px,13,7,5,5,M); line(px,7,12,9,B); line(px,7,12,10,B);
+      var p=(t*0.7)%1, x=7+Math.round(p*5); box(px,x,8,2,3,L);
+    },
+    solvo:function(px,t){                          // balance transfers debt → paid
+      line(px,2,17,18,B); line(px,2,17,17,B);
       var total=11, moved=Math.round(total*((t*0.5)%1));
-      for(var i=0;i<total-moved;i++){px(6,15-i,P);px(7,15-i,P);}
-      for(var j=0;j<moved;j++){px(12,15-j,P);px(13,15-j,P);}
+      for(var i=0;i<total-moved;i++) box(px,3,16-i,4,1,M);
+      for(var j=0;j<moved;j++) box(px,13,16-j,4,1,L);
+      box(px,8,9,4,2,B); px(11,8,B); px(11,11,B);
+    },
+    settle:function(px,t){                          // turbulent line decays flat
+      for(var x=2;x<=17;x++){ var damp=1-(x-2)/15;
+        var y=9+Math.round(Math.sin(x*1.05 + t*4)*4.6*damp);
+        box(px,x,y,1,2, x>12?L:M); }
+    },
+    clear:function(px,t){                            // stack empties to zero, then a check
+      var ph=(t*0.42)%1;
+      if(ph<0.7){ var h=Math.round(10*(1-ph/0.7)); line(px,4,15,18,B);
+        for(var i=0;i<h;i++) box(px,6,17-i,7,1,M); }
+      else{ [[4,10],[5,11],[6,12],[7,13],[8,14],[9,13],[10,11],[11,9],[12,7],[13,5],[14,4]]
+              .forEach(function(p){ box(px,p[0],p[1],2,2,L); }); }
     }
   };
-  document.querySelectorAll('canvas.mark').forEach(function(c){ make(c, marks[c.dataset.mark]); });
+
+  document.querySelectorAll('canvas.nmark').forEach(function(c){ var f=marks[c.dataset.mark]; if(f) make(c,f); });
 })();
 </script>
 </body>
