@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Upcoming products · Luron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  @font-face{
+    font-family:'ALT Riviera';
+    src:url('ALTRivieraVF.ttf') format('truetype-variations');
+    font-weight:200 800; font-style:normal; font-display:swap;
+  }
+  :root{
+    --purple:#6828FF;
+    --a08:#6828FF14; --a10:#6828FF1A; --a16:#6828FF29;
+    --ground:#F0F1F2; --card:#FFFFFF; --border:#E5E7EB; --hairline:#F3F4F6;
+    --ink:#1C222F; --sub:#4F5460; --tertiary:#91939A;
+    --sans:'ALT Riviera',system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:'Roboto Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;
+    -webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:1160px;margin:0 auto;padding:56px 28px 80px}
+
+  .eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tertiary)}
+  h1{font-weight:400;font-size:34px;letter-spacing:-.01em;margin:10px 0 0;line-height:1.12}
+  .lede{font-weight:300;color:var(--sub);font-size:16px;max-width:70ch;margin:14px 0 0}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
+  .cell{background:var(--card);border:1px solid var(--border);padding:22px 22px 20px;
+    display:flex;flex-direction:column}
+  .chd{display:flex;align-items:flex-start;gap:16px}
+  canvas.mark{flex:0 0 auto;background:transparent}
+  .meta{min-width:0}
+  .cat{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--tertiary)}
+  .desc{color:var(--sub);font-weight:300;font-size:14px;margin-top:5px}
+
+  .names{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--hairline);
+    display:flex;flex-direction:column;gap:13px}
+  .name{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;align-items:baseline}
+  .nm{font-weight:400;font-size:22px;letter-spacing:-.01em;color:var(--ink)}
+  .why{grid-column:2;font-weight:300;font-size:13px;color:var(--sub)}
+  .tag{font-family:var(--mono);font-weight:500;font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--purple);background:var(--a10);
+    padding:3px 7px;align-self:center;justify-self:start}
+  .name.lead .nm{color:var(--purple)}
+
+  .foot{margin-top:30px;padding-top:20px;border-top:1px solid var(--border);
+    font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--tertiary);line-height:1.9}
+  .foot b{color:var(--sub);font-weight:500}
+
+  @media (max-width:760px){.grid{grid-template-columns:1fr}.wrap{padding:40px 20px 64px}}
+  @media (prefers-reduced-motion:reduce){canvas.mark{opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Product lineup</div>
+  <h1>Four products, one system</h1>
+  <p class="lede">Torq is settled. The other three each get three names — same rules as Torq: one or two syllables, right at first read in Turkish and English, name the mechanism and not the industry. The <b style="font-weight:400">-q</b> spelling stays on Torq alone, so the set reads as designed, not as one gimmick repeated.</p>
+
+  <div class="grid">
+
+    <!-- FACTORY -->
+    <article class="cell">
+      <div class="chd">
+        <canvas class="mark" data-mark="torq"></canvas>
+        <div class="meta">
+          <div class="cat">Factory</div>
+          <div class="desc">Torque — the production mechanism. The anchor the whole set rhymes against.</div>
+        </div>
+      </div>
+      <ul class="names">
+        <li class="name lead">
+          <span class="nm">Torq</span><span class="tag">Settled</span>
+          <span class="why">Kept as is. One syllable, names the mechanism, sets the -q the family borrows from.</span>
+        </li>
+      </ul>
+    </article>
+
+    <!-- RETAIL -->
+    <article class="cell">
+      <div class="chd">
+        <canvas class="mark" data-mark="retail"></canvas>
+        <div class="meta">
+          <div class="cat">Retail</div>
+          <div class="desc">Stock, replenishment, shelf availability.</div>
+        </div>
+      </div>
+      <ul class="names">
+        <li class="name lead">
+          <span class="nm">Onhand</span><span class="tag">Lead</span>
+          <span class="why">The number every retailer argues about — names the metric the buyer already owns.</span>
+        </li>
+        <li class="name">
+          <span class="nm">Restock</span>
+          <span class="why">The replenishment action itself. Reads instantly in both languages.</span>
+        </li>
+        <li class="name">
+          <span class="nm">Shelf</span>
+          <span class="why">Where availability lives. One syllable, zero explanation in any market.</span>
+        </li>
+      </ul>
+    </article>
+
+    <!-- VOICE -->
+    <article class="cell">
+      <div class="chd">
+        <canvas class="mark" data-mark="voice"></canvas>
+        <div class="meta">
+          <div class="cat">Voice</div>
+          <div class="desc">The AI voice layer — the product name that replaces Oktopus.</div>
+        </div>
+      </div>
+      <ul class="names">
+        <li class="name lead">
+          <span class="nm">Sonar</span><span class="tag">Lead</span>
+          <span class="why">Listen before speaking. Serious, anti-mascot, and you already own “Sonar Intake.”</span>
+        </li>
+        <li class="name">
+          <span class="nm">Vox</span>
+          <span class="why">Voice, Latin root. One syllable, adult, reads correctly everywhere.</span>
+        </li>
+        <li class="name">
+          <span class="nm">Relay</span>
+          <span class="why">The assistant that carries the conversation, person to person.</span>
+        </li>
+      </ul>
+    </article>
+
+    <!-- COLLECTIONS -->
+    <article class="cell">
+      <div class="chd">
+        <canvas class="mark" data-mark="collect"></canvas>
+        <div class="meta">
+          <div class="cat">Collections</div>
+          <div class="desc">Debt collection voice AI.</div>
+        </div>
+      </div>
+      <ul class="names">
+        <li class="name lead">
+          <span class="nm">Solvo</span><span class="tag">Lead</span>
+          <span class="why">Latin “to loosen, to pay off.” Financial without pressure, ownable outright.</span>
+        </li>
+        <li class="name">
+          <span class="nm">Settle</span>
+          <span class="why">What both sides want. Frames agreement, not chasing — the posture regulators like.</span>
+        </li>
+        <li class="name">
+          <span class="nm">Clear</span>
+          <span class="why">Clear the balance. One syllable, understood in zero seconds.</span>
+        </li>
+      </ul>
+    </article>
+
+  </div>
+
+  <div class="foot">
+    The <b>-q</b> stays on Torq alone &middot; leads read as a set → <b>Torq · Onhand · Sonar · Solvo</b>
+  </div>
+</div>
+
+<script>
+(function(){
+  var g=20, cell=4, DISP=68;
+  var P='#6828FF', D='rgba(104,40,255,.32)';
+  function make(canvas, fn){
+    canvas.width=g*cell; canvas.height=g*cell;
+    canvas.style.width=DISP+'px'; canvas.style.height=DISP+'px'; canvas.style.imageRendering='pixelated';
+    var ctx=canvas.getContext('2d');
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function px(x,y,c){ x=Math.round(x); y=Math.round(y); if(x<0||y<0||x>=g||y>=g)return; ctx.fillStyle=c; ctx.fillRect(x*cell,y*cell,cell,cell); }
+    function frame(ts){ ctx.clearRect(0,0,g*cell,g*cell); fn(px, reduce?1.2:ts/1000); if(!reduce) requestAnimationFrame(frame); }
+    requestAnimationFrame(frame);
+  }
+  var marks={
+    torq:function(px,t){
+      var cx=9.5,cy=9.5,R=7;
+      for(var a=0;a<20;a++){var an=a/20*6.2832;px(cx+Math.cos(an)*R,cy+Math.sin(an)*R,D);}
+      for(var k=0;k<5;k++){var an=t*1.7+k*0.24;px(cx+Math.cos(an)*R,cy+Math.sin(an)*R,P);}
+      for(var y=8;y<=11;y++)for(var x=8;x<=11;x++)px(x,y,P);
+    },
+    retail:function(px,t){
+      [4,10,16].forEach(function(sy){for(var x=3;x<=16;x++)px(x,sy,D);});
+      [4,7,13].forEach(function(sx){px(sx,3,D);px(sx,2,D);});
+      [5,9,12,15].forEach(function(sx){px(sx,15,D);});
+      var n=6, ph=Math.floor(t*2.4)%(2*n);
+      for(var i=0;i<n;i++){ var sx=4+i*2; var on = ph<n ? i<ph : i>=(ph-n);
+        if(on){px(sx,9,P);px(sx+1,9,P);px(sx,8,P);px(sx+1,8,P);} }
+    },
+    voice:function(px,t){
+      for(var y=3;y<=15;y++){px(2,y,D);px(17,y,D);}
+      for(var x=2;x<=17;x++){px(x,3,D);px(x,15,D);}
+      px(6,16,D);px(7,17,D);
+      [5,8,11,14].forEach(function(bx,i){
+        var h=2+Math.round(3.4*(0.5+0.5*Math.sin(t*4+i*1.1)));
+        var top=9-Math.floor(h/2);
+        for(var k=0;k<h;k++){px(bx,top+k,P);px(bx+1,top+k,P);}
+      });
+    },
+    collect:function(px,t){
+      for(var x=3;x<=16;x++)px(x,16,D);
+      px(6,2,D);px(7,2,D);px(12,2,D);px(13,2,D);
+      var total=11, moved=Math.round(total*((t*0.5)%1));
+      for(var i=0;i<total-moved;i++){px(6,15-i,P);px(7,15-i,P);}
+      for(var j=0;j<moved;j++){px(12,15-j,P);px(13,15-j,P);}
+    }
+  };
+  document.querySelectorAll('canvas.mark').forEach(function(c){ make(c, marks[c.dataset.mark]); });
+})();
+</script>
+</body>
+</html>
