@@ -12,220 +12,271 @@
   @font-face{font-family:'ALT Riviera';src:url('ALTRivieraVF.ttf') format('truetype-variations');font-weight:200 800;font-style:normal;font-display:swap}
   :root{
     --purple:#6828FF; --a10:#6828FF1A;
-    --ground:#F0F1F2; --card:#FFFFFF; --border:#E5E7EB; --hairline:#F3F4F6;
+    --ground:#F0F1F2; --card:#FFFFFF; --line:#E5E7EB; --hairline:#F3F4F6;
     --ink:#1C222F; --sub:#4F5460; --tertiary:#91939A;
     --sans:'ALT Riviera',system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
     --mono:'Roboto Mono',ui-monospace,'SF Mono',Menlo,monospace;
   }
   *{box-sizing:border-box}
   html,body{margin:0}
-  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.5}
-  .wrap{max-width:1160px;margin:0 auto;padding:56px 28px 80px}
-  .eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tertiary)}
-  h1{font-weight:400;font-size:34px;letter-spacing:-.01em;margin:10px 0 0;line-height:1.12}
-  .lede{font-weight:300;color:var(--sub);font-size:16px;max-width:70ch;margin:14px 0 0}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1300px;margin:0 auto;padding:32px 24px 72px;display:flex;flex-direction:column;gap:16px}
 
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
-  .cell{background:var(--card);border:1px solid var(--border);padding:22px 22px 8px;display:flex;flex-direction:column}
-  .cat{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tertiary)}
-  .desc{color:var(--sub);font-weight:300;font-size:14px;margin-top:5px}
+  .mono-eyebrow{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tertiary)}
+  h1{font-size:22px;font-weight:400;line-height:30px;margin:6px 0 0}
+  .page-desc{max-width:620px;font-size:13.5px;font-weight:300;line-height:20px;color:var(--sub);margin:4px 0 0}
 
-  .names{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column}
-  .name{display:flex;gap:15px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--hairline)}
-  .name:first-child{border-top:0}
-  canvas.nmark{flex:0 0 auto;width:56px;height:56px;image-rendering:pixelated;margin-top:2px}
-  .ntext{min-width:0}
-  .hd{display:flex;align-items:center;gap:9px}
-  .nm{font-weight:400;font-size:21px;letter-spacing:-.01em;color:var(--ink);line-height:1}
-  .name.lead .nm{color:var(--purple)}
-  .tag{font-family:var(--mono);font-weight:500;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);background:var(--a10);padding:3px 7px}
-  .why{font-weight:300;font-size:13px;color:var(--sub);margin-top:5px}
+  .card{background:var(--card);border:1px solid var(--line)}
+  .torqbar{display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:16px}
+  .torqbar .who{display:flex;align-items:center;gap:12px}
+  .torqbar .nm{font-size:16px;line-height:20px}
+  .torqbar .sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tertiary)}
+  .torqbar .note{max-width:520px;font-size:12.5px;font-weight:300;line-height:18px;color:var(--sub)}
 
-  .foot{margin-top:30px;padding-top:20px;border-top:1px solid var(--border);font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--tertiary);line-height:1.9}
+  .sec-hd{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 16px 12px}
+  .sec-hd h2{font-size:16px;font-weight:400;line-height:24px;margin:0}
+  .sec-hd p{margin:2px 0 0;font-size:12.5px;font-weight:300;line-height:18px;color:var(--sub)}
+  .cands{display:grid;gap:8px;padding:0 16px 16px}
+  @media(min-width:1080px){.cands{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:700px) and (max-width:1079px){.cands{grid-template-columns:repeat(2,1fr)}}
+
+  .cand{border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:12px}
+  .cand.lead{border-color:#6828FF40;background:#6828FF08}
+  .top{display:flex;align-items:flex-start;gap:16px}
+  .top .txt{min-width:0;flex:1}
+  .top .isim{font-size:20px;font-weight:400;line-height:28px;display:flex;align-items:center;gap:8px}
+  .cand.lead .isim{color:var(--purple)}
+  .badge{font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);background:var(--a10);padding:2px 6px}
+  .top .anlam{margin:2px 0 0;font-size:12.5px;font-weight:300;line-height:18px;color:var(--sub)}
+  .mini{display:flex;flex-direction:column;align-items:center;gap:4px;flex:none}
+  .mini span{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tertiary)}
+  dl{margin:0;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--hairline);padding-top:12px}
+  .row{display:grid;grid-template-columns:60px 1fr;gap:12px}
+  dt{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tertiary);padding-top:2px}
+  dd{margin:0;font-size:12.5px;font-weight:300;line-height:18px;color:var(--sub)}
+  canvas{display:block;image-rendering:pixelated;flex:none}
+  .foot{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--tertiary);line-height:1.9;padding-top:4px}
   .foot b{color:var(--sub);font-weight:500}
-  @media (max-width:760px){.grid{grid-template-columns:1fr}.wrap{padding:40px 20px 64px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow">Product lineup</div>
-  <h1>Four products, one system</h1>
-  <p class="lede">Torq is settled — its mark stays as built. The other three each get three names, each with its own mark. Same rules as Torq: one or two syllables, right at first read in Turkish and English, name the mechanism and not the industry. The <b style="font-weight:400">-q</b> spelling stays on Torq alone.</p>
 
-  <div class="grid">
-
-    <article class="cell">
-      <div class="cat">Factory</div>
-      <div class="desc">Torque — the production mechanism. The anchor the whole set rhymes against.</div>
-      <ul class="names">
-        <li class="name lead">
-          <canvas class="nmark" data-mark="torq"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Torq</span><span class="tag">Settled</span></div>
-          <div class="why">Kept as built — original mark, one syllable, sets the -q the family borrows from.</div></div>
-        </li>
-      </ul>
-    </article>
-
-    <article class="cell">
-      <div class="cat">Retail</div>
-      <div class="desc">Stock, replenishment, shelf availability.</div>
-      <ul class="names">
-        <li class="name lead">
-          <canvas class="nmark" data-mark="onhand"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Onhand</span><span class="tag">Lead</span></div>
-          <div class="why">The number every retailer argues about — names the metric the buyer already owns.</div></div>
-        </li>
-        <li class="name">
-          <canvas class="nmark" data-mark="restock"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Restock</span></div>
-          <div class="why">The replenishment action itself. Reads instantly in both languages.</div></div>
-        </li>
-        <li class="name">
-          <canvas class="nmark" data-mark="shelf"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Shelf</span></div>
-          <div class="why">Where availability lives. One syllable, zero explanation in any market.</div></div>
-        </li>
-      </ul>
-    </article>
-
-    <article class="cell">
-      <div class="cat">Voice</div>
-      <div class="desc">The AI voice layer — the product name that replaces Oktopus.</div>
-      <ul class="names">
-        <li class="name lead">
-          <canvas class="nmark" data-mark="sonar"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Sonar</span><span class="tag">Lead</span></div>
-          <div class="why">Listen before speaking. Serious, anti-mascot, and you already own “Sonar Intake.”</div></div>
-        </li>
-        <li class="name">
-          <canvas class="nmark" data-mark="vox"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Vox</span></div>
-          <div class="why">Voice, Latin root. One syllable, adult, reads correctly everywhere.</div></div>
-        </li>
-        <li class="name">
-          <canvas class="nmark" data-mark="relay"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Relay</span></div>
-          <div class="why">The assistant that carries the conversation, person to person.</div></div>
-        </li>
-      </ul>
-    </article>
-
-    <article class="cell">
-      <div class="cat">Collections</div>
-      <div class="desc">Debt collection voice AI.</div>
-      <ul class="names">
-        <li class="name lead">
-          <canvas class="nmark" data-mark="solvo"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Solvo</span><span class="tag">Lead</span></div>
-          <div class="why">Latin “to loosen, to pay off.” Financial without pressure, ownable outright.</div></div>
-        </li>
-        <li class="name">
-          <canvas class="nmark" data-mark="settle"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Settle</span></div>
-          <div class="why">What both sides want. Frames agreement, not chasing — the posture regulators like.</div></div>
-        </li>
-        <li class="name">
-          <canvas class="nmark" data-mark="clear"></canvas>
-          <div class="ntext"><div class="hd"><span class="nm">Clear</span></div>
-          <div class="why">Clear the balance. One syllable, understood in zero seconds.</div></div>
-        </li>
-      </ul>
-    </article>
-
+  <div>
+    <p class="mono-eyebrow">Naming study</p>
+    <h1>Three names, three marks, per product</h1>
+    <p class="page-desc">Same rules as Torq: one or two syllables, read correctly at first sight in Turkish and English, name the mechanism and not the industry. The -q spelling stays on Torq alone.</p>
   </div>
+
+  <div class="card torqbar">
+    <div class="who">
+      <canvas id="torqmark"></canvas>
+      <div>
+        <p class="nm" style="margin:0">Torq</p>
+        <p class="sub" style="margin:0">Factory · settled</p>
+      </div>
+    </div>
+    <p class="note">The mark animates the mechanism, never a decoration. Everything below follows the same build: 20×20 pixels, brand purple only, whole-number scaling, one frame under reduced motion.</p>
+  </div>
+
+  <div id="sections"></div>
 
   <div class="foot">The <b>-q</b> stays on Torq alone &middot; leads read as a set → <b>Torq · Onhand · Sonar · Solvo</b></div>
 </div>
 
 <script>
 (function(){
-  var g=20, cell=2, DISP=40;
-  var B='#3d1785', M='#6828ff', L='#9a6bff';
-  function make(canvas, fn){
-    canvas.width=g*cell; canvas.height=g*cell; canvas.style.imageRendering='pixelated';
-    var ctx=canvas.getContext('2d');
-    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
-    function px(x,y,c){ x=Math.round(x); y=Math.round(y); if(x<0||y<0||x>=g||y>=g)return; ctx.fillStyle=c; ctx.fillRect(x*cell,y*cell,cell,cell); }
-    function pxx(px_,x,y,c){}
-    function frame(ts){ ctx.clearRect(0,0,g*cell,g*cell); fn(px, reduce?1.2:ts/1000); if(!reduce) requestAnimationFrame(frame); }
-    requestAnimationFrame(frame);
+/* ============================================================
+   Marks — same build as Torq: 20×20 px, brand purple only.
+   Palette and box/ring helpers are the originals.
+   ============================================================ */
+var N=20, te={hi:"#d3bcff",l:"#9a6bff",m:"#6828ff",d:"#3d1785"};
+
+function Ye(e,x,y,w,h,c){for(var j=y;j<y+h;j++)for(var i=x;i<x+w;i++)e(i,j,c);}      // filled rect
+function Tn(e,x,y,w,h){                                                              // 3D case: lit top/left, dark base
+  Ye(e,x,y,w,h,te.m);
+  for(var i=x;i<x+w;i++)e(i,y,te.l);
+  for(var j=y;j<y+h;j++)e(x,j,te.l);
+  for(var i2=x;i2<x+w;i2++)e(i2,y+h-1,te.d);
+}
+function disc(e,cx,cy,r,c){for(var y=0;y<N;y++)for(var x=0;x<N;x++){var dx=x-cx,dy=y-cy;if(dx*dx+dy*dy<=r*r)e(x,y,c);}}
+function ring(e,cx,cy,r,c){for(var a=0;a<Math.PI*2;a+=.18)e(Math.round(cx+Math.cos(a)*r),Math.round(cy+Math.sin(a)*r),c);}
+
+/* ---- Torq (original): rotating gear body + hub + signal ring ---- */
+var P=9.5,Q=9.5,TEETH=8,RO=6.6,RI=4.9,TR=7.7,HUB=2.5;
+function torqBody(e,ang){
+  for(var y=0;y<N;y++)for(var x=0;x<N;x++){
+    var dx=x-P,dy=y-Q,l=Math.sqrt(dx*dx+dy*dy);
+    if(l>RO||l<RI)continue;
+    var lit=dx+dy<-3;
+    e(x,y,lit?te.l:(l>RO-.9?te.d:te.m));
   }
-  function line(px,x0,x1,y,c){for(var x=x0;x<=x1;x++)px(x,y,c);}
-  function box(px,x,y,w,h,c){for(var j=0;j<h;j++)for(var i=0;i<w;i++)px(x+i,y+j,c);}
-
-  // ---- Torq: exact original gear + rotating torque shimmer ----
-  var TG=["00000000000000000000","00000000010000000000","00000000010000000000","00001000033000010000","00012033333311021000","00000333000021100000","00003330000002110000","00003300000000210000","00003000111100010000","00033000122100021000","01133000122100021110","00003000111100010000","00001200000000210000","00001120000002110000","00000112000021100000","00012011122111021000","00001000011000010000","00000000001000000000","00000000001000000000","00000000000000000000"];
-  var TCELLS=[]; TG.forEach(function(row,y){for(var x=0;x<20;x++){if(row.charAt(x)!=='0')TCELLS.push([x,y]);}});
-  function torq(px,t){
-    var cx=9.5,cy=9.5,sweep=t*0.8;
-    TCELLS.forEach(function(p){
-      var x=p[0],y=p[1],dx=x-cx,dy=y-cy,dist=Math.sqrt(dx*dx+dy*dy),col;
-      if(dist<2.7){ col = dist<1.3 ? L : B; }
-      else{ var d=Math.cos(Math.atan2(dy,dx)-sweep); col = d>0.35?L:(d<-0.35?B:M); }
-      px(x,y,col);
-    });
+  for(var n=0;n<TEETH;n++){
+    var r=ang+n*Math.PI*2/TEETH,
+        i=Math.round(P+Math.cos(r)*TR), o=Math.round(Q+Math.sin(r)*TR);
+    e(i,o,te.m);
+    e(i+(Math.cos(r)>.4?1:Math.cos(r)<-.4?-1:0),o,te.d);
+    e(i,o+(Math.sin(r)>.4?1:Math.sin(r)<-.4?-1:0),te.d);
   }
+}
+function torqHub(e,hot){for(var y=0;y<N;y++)for(var x=0;x<N;x++){var dx=x-P,dy=y-Q,l=Math.sqrt(dx*dx+dy*dy);if(l>HUB)continue;e(x,y,l>HUB-1?te.d:(hot?te.hi:te.l));}}
+function torqPing(e,p){var rad=RO+1.4+p*3.2,c=p>.6?te.hi:te.l;for(var a=0;a<Math.PI*2;a+=.22)e(Math.round(P+Math.cos(a)*rad),Math.round(Q+Math.sin(a)*rad),c);}
+function torq(e,t){ torqBody(e, Math.floor(t*6)*(Math.PI*2/TEETH/2)); torqHub(e,false); torqPing(e, (t*1.3)%1); }
 
-  var marks={
-    torq:torq,
+/* ---- Retail ---- */
+function onhand(e,t){                    // original: top case lifts off the pallet and settles
+  Ye(e,2,16,16,2,te.d); Ye(e,3,18,2,1,te.d); Ye(e,15,18,2,1,te.d);
+  Tn(e,3,12,6,4); Tn(e,11,12,6,4); Tn(e,7,8,6,4);
+  var n=Math.round(1.6*(.5+.5*Math.sin(t*2)));
+  Tn(e,7,3-n,6,4);
+}
+function restock(e,t){                   // a case drops in and the row grows back
+  Ye(e,2,16,16,2,te.d); Ye(e,3,18,2,1,te.d); Ye(e,15,18,2,1,te.d);
+  var slots=4, ph=Math.floor(t*1.4)%(slots+1);
+  for(var i=0;i<slots;i++) if(i<ph){ Tn(e,2+i*4,12,4,4); Tn(e,2+i*4,8,4,4); }
+  var fall=(t*1.4)%1;
+  if(ph<slots) Tn(e, 2+ph*4, 1+Math.round(fall*7), 4,4);
+}
+function shelf(e,t){                     // three shelves; the middle row refills slot by slot
+  var rows=[5,11,17];
+  for(var i=0;i<rows.length;i++) Ye(e,2,rows[i],16,1,te.d);
+  for(var a=0;a<4;a++) Tn(e,3+a*4,14,3,3);
+  for(var b=0;b<4;b++) Tn(e,3+b*4,2,3,3);
+  var r=Math.floor(t*1.2)%5;
+  for(var c=0;c<r;c++) Tn(e,3+c*4,8,3,3);
+}
 
-    onhand:function(px,t){                     // top case lifts off the pallet and settles
-      line(px,2,17,18,B); line(px,2,17,17,B); px(3,19,B);px(9,19,B);px(16,19,B);
-      box(px,3,13,4,3,M); box(px,8,13,4,3,M); box(px,13,13,4,3,M);
-      box(px,5,9,4,3,M); box(px,11,9,4,3,M);
-      var lift=Math.round(3*(0.5+0.5*Math.sin(t*1.5)));
-      box(px,8,5-lift,4,3,L);
-    },
-    restock:function(px,t){                    // shelf refills slot by slot, feed arrow above
-      line(px,2,17,16,B); line(px,2,17,15,B);
-      var n=5, ph=Math.floor(t*2.2)%(n+2);
-      for(var i=0;i<n;i++){ if(i<ph) box(px,3+i*3,11,3,4, i===ph-1?L:M); }
-      box(px,9,3,2,5,M); px(8,7,M);px(11,7,M); px(7,6,M);px(12,6,M);
-    },
-    shelf:function(px,t){                       // three shelves, one slot blinks empty→filled
-      var rows=[5,11,17];
-      rows.forEach(function(sy,ri){ line(px,2,17,sy,B);
-        for(var x=3;x<=15;x+=4){ if(ri===1 && x===7 && (Math.floor(t*1.6)%2)===0) continue;
-          box(px,x,sy-3,3,3, (ri===1&&x===7)?L:M); } });
-    },
-    sonar:function(px,t){                        // rings leave the core and fade
-      var cx=9.5,cy=9.5; box(px,8,8,4,4,L);
-      for(var r=0;r<3;r++){ var rad=((t*2.2 + r*2.6)%7.8)+2.4; if(rad>8.6) continue;
-        var col = rad>6.4?B:M;
-        for(var a=0;a<64;a++){var an=a/64*6.2832; px(cx+Math.cos(an)*rad, cy+Math.sin(an)*rad, col);} }
-    },
-    vox:function(px,t){                          // equalizer, full height
-      [3,7,11,15].forEach(function(bx,i){
-        var h=4+Math.round(9*(0.5+0.5*Math.sin(t*4+i*1.15)));
-        for(var k=0;k<h;k++){ box(px,bx,17-k,3,1, k===h-1?L:M); }
-      });
-    },
-    relay:function(px,t){                         // packet carried between two nodes
-      box(px,2,7,5,5,M); box(px,13,7,5,5,M); line(px,7,12,9,B); line(px,7,12,10,B);
-      var p=(t*0.7)%1, x=7+Math.round(p*5); box(px,x,8,2,3,L);
-    },
-    solvo:function(px,t){                          // balance transfers debt → paid
-      line(px,2,17,18,B); line(px,2,17,17,B);
-      var total=11, moved=Math.round(total*((t*0.5)%1));
-      for(var i=0;i<total-moved;i++) box(px,3,16-i,4,1,M);
-      for(var j=0;j<moved;j++) box(px,13,16-j,4,1,L);
-      box(px,8,9,4,2,B); px(11,8,B); px(11,11,B);
-    },
-    settle:function(px,t){                          // turbulent line decays flat
-      for(var x=2;x<=17;x++){ var damp=1-(x-2)/15;
-        var y=9+Math.round(Math.sin(x*1.05 + t*4)*4.6*damp);
-        box(px,x,y,1,2, x>12?L:M); }
-    },
-    clear:function(px,t){                            // stack empties to zero, then a check
-      var ph=(t*0.42)%1;
-      if(ph<0.7){ var h=Math.round(10*(1-ph/0.7)); line(px,4,15,18,B);
-        for(var i=0;i<h;i++) box(px,6,17-i,7,1,M); }
-      else{ [[4,10],[5,11],[6,12],[7,13],[8,14],[9,13],[10,11],[11,9],[12,7],[13,5],[14,4]]
-              .forEach(function(p){ box(px,p[0],p[1],2,2,L); }); }
-    }
-  };
+/* ---- Voice ---- */
+function sonar(e,t){                     // original: rings leave the core and fade
+  disc(e,9.5,9.5,2.6,te.m); disc(e,9.5,9.5,1.2,te.hi);
+  for(var n=0;n<3;n++){var r=(t*.7+n/3)%1; ring(e,9.5,9.5,4+r*5.4, r>.6?te.l:te.hi);}
+}
+function vox(e,t){                       // equalizer inside a speech bracket (Talq's build)
+  Ye(e,2,3,16,1,te.m); Ye(e,2,13,16,1,te.m); Ye(e,2,3,1,11,te.m); Ye(e,17,3,1,11,te.m);
+  for(var r=2;r<18;r++) e(r,3,te.l);
+  e(5,14,te.m); e(6,14,te.m); e(5,15,te.m);
+  var bars=[6,9,12];
+  for(var i=0;i<bars.length;i++){
+    var h=2+Math.round(3*(.5+.5*Math.sin(t*6+i*1.4)));
+    for(var o=0;o<h;o++){ e(bars[i],11-o,te.hi); e(bars[i]+1,11-o,te.hi); }
+  }
+}
+function relay(e,t){                     // the turn is handed from one node to the other
+  Tn(e,2,7,5,6); Tn(e,13,7,5,6);
+  Ye(e,7,10,6,1,te.d);
+  var p=(t*.6)%1, x=7+Math.round(p*5);
+  Ye(e,x,9,2,3, p<.5?te.hi:te.l);
+}
 
-  document.querySelectorAll('canvas.nmark').forEach(function(c){ var f=marks[c.dataset.mark]; if(f) make(c,f); });
+/* ---- Collections ---- */
+function solvo(e,t){                     // original: balance transfers debt → paid
+  Ye(e,2,17,16,1,te.d);
+  var n=(t*.5)%1, r=Math.round(12*(1-n)), i=Math.round(12*n);
+  for(var o=0;o<r;o++) Ye(e,3,16-o,5,1, o===r-1?te.l:te.m);
+  for(var p=0;p<i;p++) Ye(e,12,16-p,5,1, p===i-1?te.hi:te.l);
+  Ye(e,9,9,2,1,te.d);
+}
+function settle(e,t){                    // original: a turbulent line decays flat
+  var n=(t*.45)%1;
+  for(var r=2;r<18;r++){
+    var i=Math.max(0,1-(r-2)/12)*(1-n),
+        o=10+Math.round(4*i*Math.sin(r*.9+t*5));
+    e(r,o, i<.08?te.hi:te.m); e(r,o+1, i<.08?te.l:te.d);
+  }
+  Ye(e,2,17,16,1,te.d);
+}
+function clear(e,t){                     // the column empties to the line, then reads zero
+  Ye(e,2,17,16,1,te.d);
+  var n=(t*.5)%1, h=Math.round(13*(1-n));
+  for(var o=0;o<h;o++) Ye(e,4,16-o,5,1, o===h-1?te.l:te.m);
+  if(n>.72){ Tn(e,12,12,5,5); Ye(e,13,14,3,1,te.hi); }
+}
+
+var MARKS={onhand:onhand,restock:restock,shelf:shelf,sonar:sonar,vox:vox,relay:relay,solvo:solvo,settle:settle,clear:clear};
+
+function mount(canvas,fn,cell){
+  canvas.width=N*cell; canvas.height=N*cell;
+  canvas.style.width=(N*cell)+'px'; canvas.style.height=(N*cell)+'px';
+  var ctx=canvas.getContext('2d');
+  var put=function(x,y,c){ if(x<0||x>=N||y<0||y>=N)return; ctx.fillStyle=c; ctx.fillRect(x*cell,y*cell,cell,cell); };
+  var render=function(t){ ctx.clearRect(0,0,N*cell,N*cell); fn(put,t); };
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ render(.4); return; }
+  (function loop(ts){ render((ts||0)/1000); requestAnimationFrame(loop); })();
+}
+
+/* ============================================================
+   Content
+   ============================================================ */
+var DATA=[
+ {urun:"Retail", alan:"Stock, replenishment, shelf availability", adaylar:[
+   {isim:"Onhand",kind:"onhand",lead:true,anlam:"On-hand stock — the number every retailer argues about",
+    neden:"Names the metric the buyer already owns. Warm, plain, and easy to trademark.",
+    risk:"Two syllables, and it breaks the -q system.",
+    hareket:"Top case lifts off the pallet and settles back."},
+   {isim:"Restock",kind:"restock",anlam:"The replenishment action itself",
+    neden:"Names the job the product does every hour. Reads instantly in Turkish and English.",
+    risk:"Descriptive — a weaker trademark than an invented word.",
+    hareket:"A case drops in and the row grows back."},
+   {isim:"Shelf",kind:"shelf",anlam:"Where availability is won or lost",
+    neden:"One syllable, concrete, and it is the word the store manager already uses.",
+    risk:"Generic on its own; needs the Luron lockup to carry weight.",
+    hareket:"Middle shelf refills slot by slot."}]},
+ {urun:"Voice", alan:"The AI voice layer, replacing Oktopus as the product name", adaylar:[
+   {isim:"Sonar",kind:"sonar",lead:true,anlam:"Listening before speaking",
+    neden:"Serious and technical — the opposite of a mascot. It also continues the asset you already own: Oktopus' listening state is literally called Sonar Intake.",
+    risk:"Common noun; leans on listening when the product also speaks.",
+    hareket:"Rings leave the core and fade."},
+   {isim:"Vox",kind:"vox",anlam:"Voice, at the root",
+    neden:"One syllable, adult, and it reads correctly in every market you would sell in.",
+    risk:"Used elsewhere in tech; the .com will be a fight.",
+    hareket:"Equalizer inside a speech bracket."},
+   {isim:"Relay",kind:"relay",anlam:"Carrying the conversation, person to person",
+    neden:"Names the mechanism rather than the sound, and it survives beyond voice-only channels.",
+    risk:"Also a networking term; buyers may expect infrastructure.",
+    hareket:"The turn is handed from one node to the other."}]},
+ {urun:"Collections", alan:"Debt collection voice AI", adaylar:[
+   {isim:"Solvo",kind:"solvo",lead:true,anlam:"Latin root of solvent — to loosen, to pay off",
+    neden:"Financial without being aggressive. Invented enough to own outright, and it reads correctly in every market you would sell in.",
+    risk:"Needs one line of explanation the first time.",
+    hareket:"Balance transfers from the debt column to the paid column."},
+   {isim:"Settle",kind:"settle",anlam:"What both sides actually want",
+    neden:"A US collections buyer understands it in zero seconds, and it frames the product as agreement rather than pressure — the regulatory posture you want.",
+    risk:"Crowded in fintech; the .com will be a fight.",
+    hareket:"A turbulent line decays flat."},
+   {isim:"Clear",kind:"clear",anlam:"Clearing the balance to zero",
+    neden:"Plain, positive, and it states the outcome the payer is buying.",
+    risk:"Very common word — trademark scope will be narrow.",
+    hareket:"The column empties to the line, then reads zero."}]}
+];
+
+var host=document.getElementById('sections'), html='';
+DATA.forEach(function(sec){
+  html+='<div class="card" style="margin-top:16px">'
+      + '<div class="sec-hd"><div><h2>'+sec.urun+'</h2><p>'+sec.alan+'</p></div></div>'
+      + '<div class="cands">';
+  sec.adaylar.forEach(function(a){
+    html+='<div class="cand'+(a.lead?' lead':'')+'">'
+        + '<div class="top">'
+        +   '<canvas data-mark="'+a.kind+'" data-cell="4"></canvas>'
+        +   '<div class="txt"><p class="isim" style="margin:0">'+a.isim+(a.lead?'<span class="badge">Lead</span>':'')+'</p>'
+        +   '<p class="anlam">'+a.anlam+'</p></div>'
+        +   '<div class="mini"><canvas data-mark="'+a.kind+'" data-cell="1"></canvas><span>20px</span></div>'
+        + '</div>'
+        + '<dl>'
+        +   '<div class="row"><dt>Why</dt><dd>'+a.neden+'</dd></div>'
+        +   '<div class="row"><dt>Risk</dt><dd>'+a.risk+'</dd></div>'
+        +   '<div class="row"><dt>Motion</dt><dd>'+a.hareket+'</dd></div>'
+        + '</dl></div>';
+  });
+  html+='</div></div>';
+});
+host.innerHTML=html;
+
+mount(document.getElementById('torqmark'), torq, 3);
+document.querySelectorAll('canvas[data-mark]').forEach(function(c){
+  mount(c, MARKS[c.dataset.mark], parseInt(c.dataset.cell,10));
+});
 })();
 </script>
 </body>
